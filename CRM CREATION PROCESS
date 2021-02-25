@@ -1,0 +1,19 @@
+CRM CREATION PROCESS
+1: Create Model (Database Table)
+    Username , pass name.... (with your own fields) : Done
+
+1,2: User Registration
+    Create a Url, template and views
+
+1,3: Render Model Form to the Template
+
+1,4: Write code to import datas to model. (C)
+
+2: Login
+    2,1: Create login URL, Template and Views and code it.
+
+3: Update profile
+    3,0: Create a Template 
+    3,1: After Login Fetch All User Data Like (U)
+
+4: Create a Dashboard

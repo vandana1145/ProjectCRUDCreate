@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUDE Create</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <h2>Create Student ({{name}})</h2>
+    <form method="post">
+    {% csrf_token %}
+   {% comment %} {{form.as_p}} {% endcomment %}
+    <div class="form-group">
+        <label>{{form.fname.label}}</label>
+        {{form.fname}}
+    </div>
+
+    <div class="form-group">
+        <label>{{form.lname.label}}</label>
+        {{form.lname}}
+    </div>
+
+    <div class="form-group">
+        <label>{{form.birthdate.label}}</label>
+        {{form.birthdate}}
+        {% comment %} {{form.birthdate.errors}} {% endcomment %}
+    </div>
+
+    <div class="form-group">
+        <label>{{form.subject.label}}</label>
+        {{form.subject}}
+    </div>
+
+    <div class="form-group">
+        <label>{{form.roll_num.label}}</label>
+        {{form.roll_num}}
+    </div>
+    
+    {% comment %} DJANGO ERROR MESSAGE CUSTOMIZE {% endcomment %}
+    {% if form.errors %}
+        {% for fields in form %}
+            {% for error in fields.errors %}
+                <div class="alert alert-danger" role="alert">
+                {{error}}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %} 
+
+    {% comment %} DJANGO MESSAGEs CUSTOMIZE {% endcomment %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }} 
+            </div>
+        {% endfor %}
+    {% endif %}
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+    <script>
+    const form_fields = document.getElementsByTagName('input')
+    for(let field in form_fields){
+        form_fields[field].className += 'form-control'
+    }
+    </script>
+</body>
+</html>
